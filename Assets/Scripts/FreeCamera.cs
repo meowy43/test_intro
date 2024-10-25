@@ -46,12 +46,8 @@ public class FreeCamera : MonoBehaviour
 		boxCollider.center = new Vector3(0, 0, mainCamera.nearClipPlane);
 	}*/
 
-	void Update()
-	{
-		Move();
-	}
 
-	void Move()
+	public void Move()
 	{
 		float h = Input.GetAxis("Horizontal");
 		float v = Input.GetAxis("Vertical");

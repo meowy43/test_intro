@@ -4,21 +4,47 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-    
     [SerializeField]
     private FreeCamera freeCamera;
+    public GameObject ui;
+    public StoneSpawner stoneSpawner;
+    public CloudController cloudController;
+    public ToolChangerController toolChangerController;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (!UI.activeSelf && )
+        if (ui.activeSelf)
+        {
+            return;
+        }
+
+        if (freeCamera != null)
         {
             freeCamera.Move();
+        }
+
+        if (stoneSpawner != null)
+        {
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                stoneSpawner.Spawn();
+            }
+        }
+
+        if (cloudController != null)
+        {
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                cloudController.MoveNext();
+            }
+        }
+
+        if (toolChangerController != null)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                toolChangerController.Change();
+            }
         }
     }
 }

@@ -2,17 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stone : MonoBehaviour
+public class StoneSpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private Transform m_point;
+    
+    [SerializeField]
+    private GameObject[] m_Prefabs;
+
+    private void Start()
     {
-        
+        if (m_point == null)
+        {
+            m_point = transform;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Spawn()
     {
-        
+        int index = Random.Range(0, m_Prefabs.Length);
+
+        Instantiate(m_Prefabs[index], m_point.position, m_point.rotation);
     }
+    
 }

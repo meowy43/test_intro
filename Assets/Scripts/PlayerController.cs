@@ -9,7 +9,7 @@ namespace Golf
         public float maxAngle = 30f;
         public float speed = 1f;
 
-        private void Update()
+        private void FixedUpdate()
         {
             Vector3 angle = stick.localEulerAngles;
             if (Input.GetMouseButton(0))
@@ -22,5 +22,7 @@ namespace Golf
             }
             stick.localEulerAngles = angle;
         }
+
+
     }
 }

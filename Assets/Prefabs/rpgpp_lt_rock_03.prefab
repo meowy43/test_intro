@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1349662285498194139}
   - component: {fileID: 8005758416013942632}
   - component: {fileID: 3877784819413546142}
+  - component: {fileID: -8188139999811938046}
   m_Layer: 0
   m_Name: rpgpp_lt_rock_03
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -134,3 +135,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 455995b8866658b42b3da7b1cab18535, type: 3}
+--- !u!114 &-8188139999811938046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3798959112448632957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed7a36a17d1831f4fa19ec48778046f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDirty: 0

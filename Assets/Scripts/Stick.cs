@@ -8,6 +8,8 @@ namespace Golf
         public float maxAngle = 30f;
         public float speed = 360f;
         public float power = 100f;
+
+        public Vector3 direction = new Vector3(0f, 0f, 0f);
         public Transform point;
         public event System.Action onCollisionStone;
 
@@ -32,11 +34,6 @@ namespace Golf
             m_isDown = true;
         }
 
-        private void Update()
-        {
-            m_dir = (point.position - m_lastPointPosition).normalized;
-            m_lastPointPosition = point.position;            
-        }
 
         private void FixedUpdate()
         {
@@ -50,6 +47,9 @@ namespace Golf
                 angle.z = Mathf.MoveTowardsAngle(angle.z, maxAngle, speed * Time.deltaTime);
             }
             transform.localEulerAngles = angle;
+            m_dir = (point.position - m_lastPointPosition).normalized;
+            m_lastPointPosition = point.position;    
+
         }
 
         private void OnCollisionEnter(Collision other)
@@ -58,7 +58,8 @@ namespace Golf
             {
                 stone.isDirty = true;
                 var contact = other.contacts[0];
-                other.rigidbody.AddForce(m_dir * power, ForceMode.Impulse);
+                other.rigidbody.AddForce(direction * power, ForceMode.Impulse);
+                // Debug.Log("direction v3" + m_dir);
                 onCollisionStone?.Invoke();
             }
         }

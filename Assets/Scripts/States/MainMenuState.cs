@@ -2,21 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class MainMenuState : MonoBehaviour
+namespace Golf
 {
-    public GameObject mainMenuUI;
-    public GamePlayState gamePlayState;
-    public TextMeshProUGUI scoreText;
-    
-    private void OnEnable()
+    public class MainMenuState : MonoBehaviour
     {
+        public GameObject mainMenuUI;
+        public GamePlayState gamePlayState;
+        public TextMeshProUGUI scoreText;
 
-    }
-    public void Play()
-    {
-        this.gameObject.SetActive(false);
-        gamePlayState.Play();
+        private void OnEnable()
+        {
+            mainMenuUI.SetActive(true);
 
+            scoreText.text = $"TOP SCORE: {GameInstance.score}";
+        }
+
+        private void OnDisable()
+        {
+            mainMenuUI.SetActive(false);
+        }
+
+        public void Play()
+        {
+            gameObject.SetActive(false);
+            gamePlayState.gameObject.SetActive(true);
+        }
     }
 }

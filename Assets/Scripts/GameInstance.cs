@@ -2,17 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameInstance : MonoBehaviour
+namespace Golf
 {
-    // Start is called before the first frame update
-    void Start()
+    public class GameInstance : MonoBehaviour
     {
-        
-    }
+        public static int score = 0;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public Transform states;
+
+        private void OnEnable()
+        {
+            score = PlayerPrefs.GetInt("TopScore");
+        }
+
+        public void OnDisable()
+        {
+            PlayerPrefs.SetInt("TopScore", score);
+        }
+
+        private void Start()
+        {
+            foreach (Transform child in states)
+            {
+                child.gameObject.SetActive(false);
+            }
+
+            states.GetChild(0).gameObject.SetActive(true);
+        }
     }
 }

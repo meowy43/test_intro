@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: farmer
-    second: {fileID: 2800000, guid: bdc5311eadbdfea4f9bce9fe14986be8, type: 3}
+    second: {fileID: 2800000, guid: 71e31859f3b486745b01855854a720b3, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: hoe
-    second: {fileID: 2800000, guid: 27dc590f18137de41911d8952409ed34, type: 3}
+    second: {fileID: 2800000, guid: 1549370ab9f9cf244aee9956a30f1a2a, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

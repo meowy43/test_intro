@@ -12,10 +12,10 @@ namespace Golf
         public Vector3 m_targetAngle;
 
         public Vector3 impactDirection;
-        public Transform point;
+        //public Transform point;
         public event System.Action onCollisionStone;
 
-        private Vector3 m_lastPointPosition;
+        //private Vector3 m_lastPointPosition;
         private Vector3 m_dir;
         private bool m_isDown = false;
         private Rigidbody m_rigidbody;

@@ -30,12 +30,12 @@ namespace Golf
 
         public void Down()
         {
-            m_isDown = false;
+            m_isDown = true;
         }
 
         public void Up()
         {
-            m_isDown = true;
+            m_isDown = false;
         }
 
 
@@ -45,16 +45,16 @@ namespace Golf
             if (m_isDown)
             {
                 //angle.z = Mathf.MoveTowardsAngle(angle.z, -maxAngle, speed * Time.deltaTime);
-                angle.z = Mathf.MoveTowardsAngle(angle.z, m_origAngle.z, speed * Time.deltaTime);
-                angle.x = Mathf.MoveTowardsAngle(angle.x, m_origAngle.x, speed * Time.deltaTime);
-                angle.y = Mathf.MoveTowardsAngle(angle.y, m_origAngle.y, speed * Time.deltaTime);
+                angle.z = Mathf.MoveTowardsAngle(angle.z, m_origAngle.z + m_targetAngle.z, speed * Time.deltaTime);
+                angle.x = Mathf.MoveTowardsAngle(angle.x, m_origAngle.x + m_targetAngle.x, speed * Time.deltaTime);
+                angle.y = Mathf.MoveTowardsAngle(angle.y, m_origAngle.y + m_targetAngle.y, speed * Time.deltaTime);
             }
             else
             {
                 //angle.z = Mathf.MoveTowardsAngle(angle.z, maxAngle, speed * Time.deltaTime);
-                angle.z = Mathf.MoveTowardsAngle(angle.z, m_origAngle.z + m_targetAngle.z, speed * Time.deltaTime);
-                angle.x = Mathf.MoveTowardsAngle(angle.x, m_origAngle.x + m_targetAngle.x, speed * Time.deltaTime);
-                angle.y = Mathf.MoveTowardsAngle(angle.y, m_origAngle.y + m_targetAngle.y, speed * Time.deltaTime);
+                angle.z = Mathf.MoveTowardsAngle(angle.z, m_origAngle.z, speed * Time.deltaTime);
+                angle.x = Mathf.MoveTowardsAngle(angle.x, m_origAngle.x, speed * Time.deltaTime);
+                angle.y = Mathf.MoveTowardsAngle(angle.y, m_origAngle.y, speed * Time.deltaTime);
             }
             transform.localEulerAngles = angle;
             //m_dir = (point.position - m_lastPointPosition).normalized;

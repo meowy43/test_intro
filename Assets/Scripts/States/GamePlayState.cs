@@ -49,7 +49,7 @@ namespace Golf
 
         private void OnScoreInc(int score)
         {
-            scoreText.text = $"SCORE: {score}";
+            scoreText.text = $"Score: {score}";
         }
 
         private void OnGameOver(int score)

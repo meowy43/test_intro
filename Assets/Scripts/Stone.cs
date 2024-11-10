@@ -14,6 +14,7 @@ namespace Golf
         {
             if (isDirty)
             {
+                Destroy(gameObject, 20f);
                 return;
             }
 

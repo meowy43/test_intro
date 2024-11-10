@@ -13,18 +13,17 @@ namespace Golf
 
         public Vector3 impactDirection;
         //public Transform point;
-        public event System.Action onCollisionStone;
+        public event System.Action onCollisionStick;
 
         //private Vector3 m_lastPointPosition;
-        private Vector3 m_dir;
         private bool m_isDown = false;
-        private Rigidbody m_rigidbody;
+        //private Rigidbody m_rigidbody;
         private Vector3 m_origAngle;
 
 
         private void Awake()
         {
-            m_rigidbody = GetComponent<Rigidbody>();
+            //m_rigidbody = GetComponent<Rigidbody>();
             m_origAngle = transform.localEulerAngles;
         }
 
@@ -70,7 +69,7 @@ namespace Golf
                 //var contact = other.contacts[0];
                 other.rigidbody.AddForce(impactDirection * power, ForceMode.Impulse);
                 // Debug.Log("direction v3 " + m_dir);
-                onCollisionStone?.Invoke();
+                onCollisionStick?.Invoke();
             }
         }
     }

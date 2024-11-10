@@ -23,7 +23,7 @@ namespace Golf
         public void OnEnable()
         {
             m_timer = Time.time - m_delay;
-            stick.onCollisionStone += OnCollisionStick;
+            stick.onCollisionStick += OnCollisionStick;
 
             m_score = 0;
 
@@ -34,7 +34,7 @@ namespace Golf
         {
             if (stick)
             {
-                stick.onCollisionStone -= OnCollisionStick;
+                stick.onCollisionStick -= OnCollisionStick;
             }
         }
 

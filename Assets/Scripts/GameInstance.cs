@@ -6,7 +6,7 @@ namespace Golf
 {
     public class GameInstance : MonoBehaviour
     {
-        public static int score = 0;
+        public static int score = 515;
 
         public Transform states;
 
@@ -26,6 +26,7 @@ namespace Golf
             {
                 child.gameObject.SetActive(false);
             }
+            PlayerPrefs.SetInt("TopScore", 515);
 
             states.GetChild(0).gameObject.SetActive(true);
         }

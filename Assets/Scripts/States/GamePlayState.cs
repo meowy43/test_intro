@@ -54,6 +54,7 @@ namespace Golf
 
         private void OnGameEnd(int score)
         {
+            GameOverState.score = score;
             GameInstance.score = Mathf.Max(GameInstance.score, score);
 
             gameObject.SetActive(false);

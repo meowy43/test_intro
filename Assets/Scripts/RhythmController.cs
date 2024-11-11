@@ -34,6 +34,10 @@ namespace Golf
             musicSource.Play();
             beatSpawner.timeToScroll = musicDelay;
         }
+        void OnDisable()
+        {
+            
+        }
 
         void Update()
         {

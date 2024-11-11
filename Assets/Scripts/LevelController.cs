@@ -10,6 +10,7 @@ namespace Golf
     {
         public Stick stick;
         public StoneSpawner stoneSpawner;
+        public RatingSpawner ratingSpawner;
         public RhythmCheck rhythmCheck;
         public RhythmController rhythmController;
         private float m_timer;
@@ -83,18 +84,21 @@ namespace Golf
         {
             m_score+=10; 
             Debug.Log($"Good! score: {m_score}");
+            ratingSpawner.Spawn(0);
             onScoreInc?.Invoke(m_score);
         }
         private void OnBeatMid()
         {
             m_score+=5; 
             Debug.Log($"Eh.. score: {m_score}");
+            ratingSpawner.Spawn(1);
             onScoreInc?.Invoke(m_score);
         }
         private void OnBeatBad()
         {
             m_score-=5; 
             Debug.Log($"Bad! score: {m_score}");
+            ratingSpawner.Spawn(2);
             onScoreInc?.Invoke(m_score);
         }
 

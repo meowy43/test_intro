@@ -9,10 +9,13 @@ namespace Golf
         public GameObject rootUI;
         public MainMenuState mainMenuState;
         public GamePlayState gamePlayState;
+        public TMPro.TextMeshProUGUI scoreText;
+        public static int score;
 
         private void OnEnable()
         {
-            rootUI.SetActive(true);           
+            scoreText.text = $"Your Score: {score}";
+            rootUI.SetActive(true);
         }
 
         private void OnDisable()

@@ -7,13 +7,12 @@ namespace Golf
 {
     public class Stone : MonoBehaviour
     {
-        public event Action onCollisionStone;
         public bool isDirty = false;
         private void OnCollisionEnter(Collision other)
         {
             if (isDirty)
             {
-                Destroy(gameObject, 20f);
+                Destroy(gameObject, 6f);
                 return;
             }
 

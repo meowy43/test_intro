@@ -9,7 +9,6 @@ namespace Golf
     {
         public event Action onCollisionStone;
         public bool isDirty = false;
-
         private void OnCollisionEnter(Collision other)
         {
             if (isDirty)
@@ -18,10 +17,10 @@ namespace Golf
                 return;
             }
 
-            if (other.gameObject.GetComponent<Stone>())
-            {
-                onCollisionStone?.Invoke();
-            }
+            // if (other.gameObject.GetComponent<Stone>())
+            // {
+            //     onCollisionStone?.Invoke();
+            // }
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Golf
             playerController.enabled = true;
             levelController.enabled = true;
 
-            levelController.onGameOver += OnGameOver;
+            levelController.onGameEnd += OnGameEnd;
             levelController.onScoreInc += OnScoreInc;
 
             OnScoreInc(0);
@@ -42,7 +42,7 @@ namespace Golf
             if (levelController)
             {
                 levelController.enabled = false;
-                levelController.onGameOver -= OnGameOver;
+                levelController.onGameEnd -= OnGameEnd;
                 levelController.onScoreInc -= OnScoreInc;
             }
         }
@@ -52,7 +52,7 @@ namespace Golf
             scoreText.text = $"Score: {score}";
         }
 
-        private void OnGameOver(int score)
+        private void OnGameEnd(int score)
         {
             GameInstance.score = Mathf.Max(GameInstance.score, score);
 

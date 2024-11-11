@@ -6,18 +6,16 @@ namespace Golf
 {
     public class BeatCircle : MonoBehaviour
     {
-        [SerializeField] private RhythmController rhythmController;
-        private float timeToScroll;
-        private Vector3 hitButtonPos;
+        public float timeToScroll;
+        public RectTransform hitButtonPos;
         private Vector3 startPos;
+        private float startTime;
         private float timer;
 
         void Start()
         {
-            timeToScroll = rhythmController.timeToScroll;
             startPos = transform.position;
-            hitButtonPos = rhythmController.hitButton.position;
-
+            startTime = (float)AudioSettings.dspTime;
         }
 
 
@@ -25,16 +23,16 @@ namespace Golf
         {
             //transform.position += new Vector3(speed * bpm * (float)AudioSettings.dspTime, 0, 0);
 
-            if (Vector3.Distance(transform.position, hitButtonPos) > 0.01f)
+            if (Vector3.Distance(transform.position, hitButtonPos.position) > 0.01f)
             {
                 float step = timer / timeToScroll;
-                transform.position = Vector3.Lerp(startPos, hitButtonPos, step);
+                transform.position = Vector3.Lerp(startPos, hitButtonPos.position, step);
             }
             else
             {
                 Destroy(gameObject, 0.1f);
             }
-            timer += Time.deltaTime;
+            timer = (float)AudioSettings.dspTime - startTime;
         }
 
     }

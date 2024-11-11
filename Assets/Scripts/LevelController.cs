@@ -10,20 +10,26 @@ namespace Golf
     {
         public Stick stick;
         public StoneSpawner stoneSpawner;
+        public RhythmCheck rhythmCheck;
+        public RhythmController rhythmController;
         private float m_timer;
         [SerializeField]
-        private float m_delay = 2f;
         private int m_score = 0;
 
         private List<Stone> m_stones = new List<Stone>();
 
-        public event Action<int> onGameOver;
+        public event Action<int> onGameEnd;
         public event Action<int> onScoreInc;
 
         public void OnEnable()
         {
-            m_timer = Time.time - m_delay;
-            stick.onCollisionStick += OnCollisionStick;
+            //m_timer = AudioSettings.dspTime - m_delay;
+            //stick.onCollisionStick += OnCollisionStick;
+            rhythmCheck.onBeatBad += OnBeatBad;
+            rhythmCheck.onBeatGood += OnBeatGood;
+            rhythmCheck.onBeatMid += OnBeatMid;
+            rhythmController.OnBeatStoneSync += OnBeatStoneSync;
+            rhythmController.OnMusicEnd += OnMusicEnd;
 
             m_score = 0;
 
@@ -32,9 +38,20 @@ namespace Golf
 
         private void OnDisable()
         {
-            if (stick)
+            // if (stick)
+            // {
+            //     //stick.onCollisionStick -= OnCollisionStick;
+            // }
+            if (rhythmCheck)
             {
-                stick.onCollisionStick -= OnCollisionStick;
+                rhythmCheck.onBeatBad -= OnBeatBad;
+                rhythmCheck.onBeatGood -= OnBeatGood;
+                rhythmCheck.onBeatMid -= OnBeatMid;
+            }
+            if (rhythmController)
+            {
+                rhythmController.OnBeatStoneSync -= OnBeatStoneSync;
+                rhythmController.OnMusicEnd -= OnMusicEnd;
             }
         }
 
@@ -48,33 +65,43 @@ namespace Golf
             m_stones.Clear();
         }
 
-        private void Update()
+        private void OnBeatStoneSync()
         {
-            if (Time.time > m_timer + m_delay)
-            {
-                m_timer = Time.time;
-
-                var go = stoneSpawner.Spawn();
-                var stone = go.GetComponent<Stone>();
-
-                stone.onCollisionStone += OnCollisionStone;
-
-                m_stones.Add(stone);
-            }
-
+            var go = stoneSpawner.Spawn();
+            var stone = go.GetComponent<Stone>();
+            //stone.onCollisionStone += OnCollisionStone;
+            m_stones.Add(stone);
         }
 
-        private void OnCollisionStick()
+        // private void OnCollisionStick()
+        // {
+        //     m_score++; 
+        //     Debug.Log($"score: {m_score}");
+        //     onScoreInc?.Invoke(m_score);
+        // }
+        private void OnBeatGood()
         {
-            m_score++; 
-            Debug.Log($"score: {m_score}");
+            m_score+=10; 
+            Debug.Log($"Good! score: {m_score}");
+            onScoreInc?.Invoke(m_score);
+        }
+        private void OnBeatMid()
+        {
+            m_score+=5; 
+            Debug.Log($"Eh.. score: {m_score}");
+            onScoreInc?.Invoke(m_score);
+        }
+        private void OnBeatBad()
+        {
+            m_score-=5; 
+            Debug.Log($"Bad! score: {m_score}");
             onScoreInc?.Invoke(m_score);
         }
 
-        private void OnCollisionStone()
+        private void OnMusicEnd()
         {
-            Debug.Log("GAME OVER!!!");
-            onGameOver?.Invoke(m_score);
+            Debug.Log("GAME END");
+            onGameEnd?.Invoke(m_score);
         }
     }
 }

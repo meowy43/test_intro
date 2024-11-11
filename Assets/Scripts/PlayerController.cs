@@ -5,6 +5,7 @@ namespace Golf
     public class PlayerController : MonoBehaviour
     {
         public Stick stick;
+        public RhythmCheck rhythmCheck;
 
         private void FixedUpdate()
         {
@@ -21,11 +22,13 @@ namespace Golf
         public void PointerDown()
         {
             stick.Down();
+            rhythmCheck.InputDown();
         }
 
         public void PointerUp()
         {
             stick.Up();
+            rhythmCheck.InputUp();
         }
     }
 }

@@ -10431,10 +10431,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e1df337b63df0147bce2db55f59069d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bpm: 130
+  bpm: 260
   beatSpawner: {fileID: 1433927997}
   rhythmCheck: {fileID: 2032340568}
-  layoutTextFile: {fileID: 4900000, guid: ea8c85597beb982428361b5c690125a7, type: 3}
+  layoutTextFile: {fileID: 4900000, guid: 8d9a1b3ac631e4e4b8cd8393d9c6b3b6, type: 3}
   musicDelay: 3
 --- !u!82 &969523178
 AudioSource:
@@ -15222,7 +15222,7 @@ GameObject:
   - component: {fileID: 1425131490}
   - component: {fileID: 1425131489}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: StatesVisualsAndSuch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

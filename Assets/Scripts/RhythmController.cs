@@ -33,13 +33,14 @@ namespace Golf
             beatArray = new List<string>(layoutTextFile.text.Split('\n')).Select(s => int.Parse(s)).ToList();
             musicSource.Play();
             beatSpawner.timeToScroll = musicDelay;
+            rhythmCheck.offsetMax = Mathf.Min(rhythmCheck.offsetMax, secPerBeat - 0.02f);
         }
         void OnDisable()
         {
-            
+            beatCount = 0;
         }
 
-        void Update()
+        void FixedUpdate()
         {
             songPosition = (float)(AudioSettings.dspTime - dspSongTime);
             songPositionInBeats = songPosition / secPerBeat;
@@ -59,9 +60,9 @@ namespace Golf
                     beatCount++;
                     beatSpawner.Spawn();
                     //Invoke(nameof(rhythmCheck.CheckStart), musicDelay - 0.45f);
-                    Invoke(nameof(TempSolutionAAAAA), musicDelay - 0.400f);
+                    Invoke(nameof(TempSolutionAAAAA), musicDelay - Mathf.Min(rhythmCheck.offsetMax, secPerBeat - 0.02f));
                     
-                    Invoke(nameof(TempSolution), musicDelay - 0.6f) ;
+                    Invoke(nameof(TempSolution), musicDelay - 0.58f) ;
                 }
             }
         }

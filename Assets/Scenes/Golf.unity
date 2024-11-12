@@ -10431,10 +10431,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e1df337b63df0147bce2db55f59069d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bpm: 260
+  bpm: 130
   beatSpawner: {fileID: 1433927997}
   rhythmCheck: {fileID: 2032340568}
-  layoutTextFile: {fileID: 4900000, guid: 8d9a1b3ac631e4e4b8cd8393d9c6b3b6, type: 3}
+  layoutTextFile: {fileID: 4900000, guid: ea8c85597beb982428361b5c690125a7, type: 3}
   musicDelay: 3
 --- !u!82 &969523178
 AudioSource:
@@ -21886,8 +21886,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6471f9b0b94080347bfe1f89eb1d3455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetMax: 0.3
-  offsetMid: 0.1
+  offsetMax: 0.195
+  offsetMid: 0.115
 --- !u!1 &2034339700 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1612273161005096, guid: ae9772ea62bbc724eb9b8ef81109f733, type: 3}
